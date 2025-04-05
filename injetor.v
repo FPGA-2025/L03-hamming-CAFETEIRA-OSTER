@@ -5,6 +5,14 @@ module injetor(
   output reg [14:0] saida
 );
 
-// implemente seu código aqui
+  always @(*) begin
+    if (erro) begin
+      // Injeta o erro no bit indicado por 'n' usando XOR
+      saida = entrada ^ (1 << n);
+    end else begin
+      // Sem erro, a saída é igual à entrada
+      saida = entrada;
+    end
+  end
 
 endmodule
